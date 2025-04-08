@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Two-Dots/static/css/main.05aaaaf1.css",
+    "main.js": "/Two-Dots/static/js/main.084d0861.js",
+    "static/js/453.e4edbfc2.chunk.js": "/Two-Dots/static/js/453.e4edbfc2.chunk.js",
+    "index.html": "/Two-Dots/index.html",
+    "main.05aaaaf1.css.map": "/Two-Dots/static/css/main.05aaaaf1.css.map",
+    "main.084d0861.js.map": "/Two-Dots/static/js/main.084d0861.js.map",
+    "453.e4edbfc2.chunk.js.map": "/Two-Dots/static/js/453.e4edbfc2.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.05aaaaf1.css",
+    "static/js/main.084d0861.js"
+  ]
+}
