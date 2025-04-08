@@ -26,7 +26,7 @@ export default function App() {
   };
 
   return (
-    <Router>
+    <Router basename="/Two-Dots"> {/* 👈 Add this */}
       <NavBar isLoggedIn={isLoggedIn} onLogoutClick={handleLogout} />
       
       <Routes>
