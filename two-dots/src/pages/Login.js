@@ -1,0 +1,98 @@
+import React, { useState } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../firebase";
+import { useNavigate, Link } from "react-router-dom"; // <-- Import Link
+import { motion } from "framer-motion";
+
+export default function Login({ onLogin }) {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      localStorage.setItem("loggedIn", "true");
+      onLogin();
+      navigate("/welcome");
+    } catch (err) {
+      setError("Invalid email or password");
+    }
+  };
+
+  return (
+    <div className="relative min-h-screen w-screen overflow-hidden bg-gradient-to-br from-gray-50 to-gray-200">
+
+      {/* Bouncing Circles Full Screen */}
+      <motion.div
+        className="absolute w-48 h-48 bg-purple-300 rounded-full opacity-20"
+        animate={{
+          x: ["0vw", "70vw", "20vw", "90vw", "0vw"],
+          y: ["0vh", "80vh", "10vh", "90vh", "0vh"]
+        }}
+        transition={{ duration: 18, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
+      />
+
+      <motion.div
+        className="absolute w-56 h-56 bg-pink-300 rounded-full opacity-20"
+        animate={{
+          x: ["90vw", "20vw", "80vw", "10vw", "90vw"],
+          y: ["90vh", "20vh", "80vh", "30vh", "90vh"]
+        }}
+        transition={{ duration: 20, repeat: Infinity, repeatType: "mirror", ease: "easeInOut" }}
+      />
+
+      {/* Centered Login Card */}
+      <div className="flex items-center justify-center min-h-screen relative z-10 p-8">
+        <div className="bg-white/20 backdrop-blur-lg shadow-xl rounded-lg p-10 max-w-md w-full border border-white/30">
+          <h2 className="text-3xl font-extrabold text-center text-gray-800 mb-8">
+            Welcome Back
+          </h2>
+
+          {error && <p className="text-red-500 mb-4 text-center">{error}</p>}
+
+          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+            <input 
+              type="email" 
+              placeholder="Email address" 
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="border border-white/30 p-3 rounded-md shadow-inner focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white/30 placeholder-gray-700"
+            />
+            <input 
+              type="password" 
+              placeholder="Password" 
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="border border-white/30 p-3 rounded-md shadow-inner focus:outline-none focus:ring-2 focus:ring-blue-400 bg-white/30 placeholder-gray-700"
+            />
+            <button 
+              type="submit" 
+              className="bg-black hover:bg-white/30 text-white py-3 rounded-md text-lg font-semibold transition-colors duration-300 shadow-md backdrop-blur-md"
+            >
+              Login
+            </button>
+          </form>
+
+          {/* Don't have an account? */}
+          <p className="mt-6 text-center text-gray-700">
+            Don’t have an account?{" "}
+            <Link 
+              to="/signup"
+              className="text-blue-600 hover:underline font-semibold"
+            >
+              Sign Up
+            </Link>
+          </p>
+
+        </div>
+      </div>
+
+    </div>
+  );
+}
