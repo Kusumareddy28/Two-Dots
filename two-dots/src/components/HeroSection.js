@@ -84,7 +84,7 @@ export default function HeroSection() {
           </motion.a>
           <motion.a
             whileHover={{ scale: 1.05 }}
-            href="/signup"
+            href="/Two-Dots/signup"
             className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-semibold px-8 py-4 rounded-full text-lg transition-all shadow-md"
           >
             Get Started
