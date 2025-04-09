@@ -13,7 +13,7 @@ export default function AboutSection() {
           animate={{
             x: ["-10vw", "30vw", "-20vw"],
             y: ["-10vh", "20vh", "-10vh"],
-            opacity: [0.5, 0.3],
+            opacity: [0.7, 0.5, 0.3],
           }}
           transition={{
             duration: 12,
@@ -27,7 +27,7 @@ export default function AboutSection() {
           animate={{
             x: ["20vw", "-30vw", "10vw"],
             y: ["30vh", "-20vh", "30vh"],
-            opacity: [0.5, 0.3],
+            opacity: [0.7, 0.5, 0.3],
           }}
           transition={{
             duration: 12,
